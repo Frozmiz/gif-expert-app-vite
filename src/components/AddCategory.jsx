@@ -1,9 +1,9 @@
 
 import { useState } from "react";
 
-const AddCategory = () => {
+const AddCategory = ({ setCategories }) => {
 
-  const [ inputValue, setInputValue ] = useState('Matrix 2');
+  const [ inputValue, setInputValue ] = useState('');
 
   const onInputChange = ({ target }) => {
     setInputValue( target.value );
@@ -11,8 +11,11 @@ const AddCategory = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(inputValue);
+    if (inputValue.trim().length <= 1) return;
 
+
+    setCategories( categories => [inputValue, ...categories]);
+    setInputValue('');
   }
 
   return (
