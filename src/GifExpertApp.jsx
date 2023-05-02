@@ -1,34 +1,29 @@
-import React from 'react'
-import { useState } from 'react';
-import AddCategory from './components/AddCategory';
+import React from "react";
+import { useState } from "react";
+import AddCategory from "./components/AddCategory";
+import GifGrid from "./components/GifGrid";
 
 const GifExpertApp = () => {
+  const [categories, setCategories] = useState(["matrix"]);
 
-    const [categories, setCategories] = useState(['matrix', 'dumbo']);
+  const onAddCategory = (newCategory) => {
+    console.log(newCategory);
 
-    const onAddCategory = ( newCategory ) => {
-        console.log( newCategory );
-
-        if (categories.includes(newCategory)) return;
-        setCategories([ newCategory.toLowerCase(), ...categories ]);
-    }
+    if (categories.includes(newCategory)) return;
+    setCategories([newCategory, ...categories]);
+  };
 
   return (
     <>
       <h1>GifExpertApp</h1>
 
-      <AddCategory
+      <AddCategory onNewCategory={(event) => onAddCategory(event)} />
 
-        onNewCategory = { event => onAddCategory(event) }
-      />
-
-      <ol>
-        {categories.map( category => {
-            return <li key={category}> {category} </li>;
-        })}
-      </ol> 
+      {categories.map((category) => (
+        <GifGrid key={category} category={category} />
+      ))}
     </>
-  )
-}
+  );
+};
 
-export default GifExpertApp
+export default GifExpertApp;
