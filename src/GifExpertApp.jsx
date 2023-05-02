@@ -4,11 +4,13 @@ import AddCategory from './components/AddCategory';
 
 const GifExpertApp = () => {
 
-    const [categories, setCategories] = useState(['Matrix', 'Dumbo']);
+    const [categories, setCategories] = useState(['matrix', 'dumbo']);
 
     const onAddCategory = ( newCategory ) => {
         console.log( newCategory );
-        setCategories([ newCategory, ...categories ]);
+
+        if (categories.includes(newCategory)) return;
+        setCategories([ newCategory.toLowerCase(), ...categories ]);
     }
 
   return (
@@ -16,6 +18,7 @@ const GifExpertApp = () => {
       <h1>GifExpertApp</h1>
 
       <AddCategory
+
         onNewCategory = { event => onAddCategory(event) }
       />
 
