@@ -5,7 +5,10 @@ const GifItem = ({ title, url, id}) => {
   return (
     <div className="card">
       <img src={ url } alt= { title } />
-      <caption> { title } </caption>
+      <table>
+        <caption> { title } </caption>
+      </table>
+      
     </div>
   )
 }

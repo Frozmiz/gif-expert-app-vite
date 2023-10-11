@@ -27,12 +27,12 @@ const GifGrid = ({ category }) => {
       <h3> { category } </h3>
 
       {
-        isLoading ? ( <h2> Cargando... </h2> ) : null 
+        isLoading ? ( <h2> Loading... </h2> ) : null 
       }
 
       <div className='card-grid'>
         { images.map( ( image ) => (
-          <GifItem key={ image.id } { ...image } />
+          <GifItem key={ image.id } { ...image } /> // Esa desestructuración de "image" hace que todas las props se vuelquen en el componente GifItem.
         )) }
         
       </div>

@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import AddCategory from "./components/AddCategory";
+import AddCategory from './components/AddCategory';
 import GifGrid from "./components/GifGrid";
 
 const GifExpertApp = () => {
+  
   const [categories, setCategories] = useState(["matrix"]);
 
   const onAddCategory = (newCategory) => {
